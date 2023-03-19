@@ -6,7 +6,7 @@ import os.path
 
 file_list_column = [
     [
-        sg.Text("Image Foldter"),
+        sg.Text("Image Folder"),
         sg.In(size=(25,1), enable_events=True, key="-FOLDER-"),
         sg.FolderBrowse(),
     ],
@@ -21,7 +21,7 @@ file_list_column = [
 
 image_viewer_column = [
     [sg.Text("Choose an image from the list on the left:")],
-    [sg.Text(size=(40,1), key="-TOUT")],
+    [sg.Text(size=(40,1), key="-TOUT-")],
     [sg.Image(key="-IMAGE-")],
 ]
 
@@ -44,19 +44,28 @@ while True:
                 break
         # folder name was filled in, so make a list of files
         if event == "-FOLDER-":
-                folder = values["-FOLDER-"]
-                try:
-                        # get list of files in folder
-                        file_list = os.listdir(folder)
-                except:
-                        file_list = []
+            folder = values["-FOLDER-"]
+            try:
+                # get list of files in folder
+                file_list = os.listdir(folder)
+            except:
+                file_list = []
 
-                fnames = [
-                        f
-                        for f in file_list
-                        if os.path.isfile(os.path.join(folder, f))
-                        and f.lower().endswith((".png", ".gif"))
-                ]
-                window["-FILE LIST-"].update(fnames)
+            fnames = [
+                f
+                for f in file_list
+                if os.path.isfile(os.path.join(folder, f))
+                and f.lower().endswith((".png", ".gif"))
+            ]
+            window["-FILE LIST-"].update(fnames)
+        elif event == "-FILE LIST-": # a file was chosen from the list
+            try:
+                filename = os.path.join(
+                        values["-FOLDER-"], values["-FILE LIST-"][0]
+                ) 
+                window["-TOUT-"].update(filename)
+                window["-IMAGE-"].update(filename=filename)
+            except:
+                    pass
 
 window.close()

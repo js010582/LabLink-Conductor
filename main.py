@@ -1,4 +1,6 @@
-# Main LabLink-Conductor Program
+# Program:  LabLink-Conductor Program
+# Author:   Jasper Sandhu
+# Date:     3/20/23
 
 import PySimpleGUI as sg
 import socket

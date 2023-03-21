@@ -1,0 +1,3 @@
+([('main',
+   '/Users/js010582/github/LabLink-Conductor/dist/main',
+   'EXECUTABLE')],)

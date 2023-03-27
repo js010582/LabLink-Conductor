@@ -1,4 +1,4 @@
-import pyvisa installed with pyvisa-pi & pyvisa
+import pyvisa
 import time
 import tkinter as tk
 from tkinter import ttk

@@ -1,0 +1,24 @@
+devices:
+  power_supply:
+    driver: scpi
+    module: pyvisa_sim
+    address: TCPIP0::localhost::5025::SOCKET
+    values:
+      voltage: 0
+      current: 0
+      output: off
+    commands:
+      *IDN:
+        response: "PyVISA-sim,PowerSupply,1.0"
+      OUTPut ON:
+        action: "power_supply.values.output = 'on'"
+      OUTPut OFF:
+        action: "power_supply.values.output = 'off'"
+      VOLTage:  # Voltage command
+        query: "power_supply.values.voltage"
+        command: "power_supply.values.voltage = float(args[0])"
+      CURRent:  # Current command
+        query: "power_supply.values.current"
+        command: "power_supply.values.current = float(args[0])"
+      MEASure:
+        query: "f'{power_supply.values.voltage},{power_supply.values.current}'"

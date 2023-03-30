@@ -1,7 +1,7 @@
 import pyvisa
-import pyvisa_sim
+from pyvisa_sim import resources
 
-pyvisa_sim.configure('power_supply.yaml')
+pyvis.configure('power_supply.yaml')
 
 rm = pyvisa.ResourceManager('@sim')
 power_supply = rm.open_resource('TCPIP0::localhost::5025::SOCKET')

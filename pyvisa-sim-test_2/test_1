@@ -1,7 +1,7 @@
-import visa
+import pyvisa
 # rm = visa.ResourceManager('@sim')
 
-rm = visa.ResourceManager('power_supply.yaml@sim')
+rm = pyvisa.ResourceManager('power_supply.yaml@sim')
 
 rm.list_resources()
 # ('ASRL1::INSTR')

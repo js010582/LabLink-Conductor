@@ -1,11 +1,10 @@
 import PySimpleGUI as sg
 import pyvisa
-import pyvisa_sim
 import time
 
 class PowerSupply:
     def __init__(self, visa_address):
-        self.resource_manager = pyvisa.ResourceManager('@sim')
+        self.resource_manager = pyvisa.ResourceManager()
         self.visa_address = visa_address
         self.instrument = None
         
@@ -109,5 +108,5 @@ class PowerSupplyGUI():
         self.window.close()
         self.ps.close()
 
-gui = PowerSupplyGUI('FlatSat_PS')
+gui = PowerSupplyGUI('FlatSat_PS_Address')
 gui.start()

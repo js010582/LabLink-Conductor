@@ -10,7 +10,7 @@ instrument = rm.open_resource(instrument_address)
 
 # Send a command to the instrument
 # instrument.write('MEASure:VOLTage:DC?')
-instrument.
+# instrument.
 
 # Read the response from the instrument
 # response = instrument.read()
